@@ -1,0 +1,35 @@
+from Conexión import ConexionBaseDatos
+
+class Productos:
+    def __init__(self, nombre, precio):
+        self.nombre = nombre
+        self.precio = precio
+
+    @staticmethod
+    def crear_producto(nombre, precio):
+        db = ConexionBaseDatos('host', 'usuario', 'contraseña', 'base_datos')
+        db.cursor.execute("INSERT INTO productos (nombre, precio) VALUES (%s, %s)", (nombre, precio))
+        db.conexion.commit()
+        db.cerrar()
+
+    @staticmethod
+    def obtener_productos():
+        db = ConexionBaseDatos('host', 'usuario', 'contraseña', 'base_datos')
+        db.cursor.execute("SELECT * FROM productos")
+        productos = db.cursor.fetchall()
+        db.cerrar()
+        return productos
+
+    @staticmethod
+    def actualizar_producto(id_producto, nuevo_nombre, nuevo_precio):
+        db = ConexionBaseDatos('host', 'usuario', 'contraseña', 'base_datos')
+        db.cursor.execute("UPDATE productos SET nombre=%s, precio=%s WHERE id=%s", (nuevo_nombre, nuevo_precio, id_producto))
+        db.conexion.commit()
+        db.cerrar()
+
+    @staticmethod
+    def borrar_producto(id_producto):
+        db = ConexionBaseDatos('host', 'usuario', 'contraseña', 'base_datos')
+        db.cursor.execute("DELETE FROM productos WHERE id=%s", (id_producto,))
+        db.conexion.commit()
+        db.cerrar()

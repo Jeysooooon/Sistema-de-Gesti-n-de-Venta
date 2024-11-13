@@ -1,0 +1,30 @@
+from Conexión import ConexionBaseDatos
+
+class Compras:
+    def __init__(self, id_usuario, id_producto, cantidad):
+        self.id_usuario = id_usuario
+        self.id_producto = id_producto
+        self.cantidad = cantidad
+
+    @staticmethod
+    def crear_compra(id_usuario, id_producto, cantidad):
+        db = ConexionBaseDatos('host', 'usuario', 'contraseña', 'base_datos')
+        db.cursor.execute("INSERT INTO compras (id_usuario, id_producto, cantidad) VALUES (%s, %s, %s)", (id_usuario, id_producto, cantidad))
+        db.conexion.commit()
+        db.cerrar()
+
+    @staticmethod
+    def obtener_compras():
+        db = ConexionBaseDatos('host', 'usuario', 'contraseña', 'base_datos')
+        db.cursor.execute("SELECT * FROM compras")
+        compras = db.cursor.fetchall()
+        db.cerrar()
+        return compras
+
+    @staticmethod
+    def obtener_compras_por_usuario(id_usuario):
+        db = ConexionBaseDatos('host', 'usuario', 'contraseña', 'base_datos')
+        db.cursor.execute("SELECT * FROM compras WHERE id_usuario=%s", (id_usuario,))
+        compras = db.cursor.fetchall()
+        db.cerrar()
+        return compras
