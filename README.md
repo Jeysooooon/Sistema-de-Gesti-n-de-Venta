@@ -83,3 +83,7 @@ SELECT *
 FROM ventas 
 WHERE cliente_id = 123;  -- Reemplaza 123 con el ID del cliente deseado
 ```
+
+##Commits
+![Captura de pantalla (943)](https://github.com/user-attachments/assets/e0196617-64d9-49cc-bd6d-9889ee56e167)
+![Captura de pantalla (944)](https://github.com/user-attachments/assets/612f17b6-4d3b-437a-b914-a788f28003a5)
