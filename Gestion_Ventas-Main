@@ -1,1 +1,134 @@
+from user import Usuario 
+from product import Producto
+from purchase import Compra
 
+def menu_principal():
+    while True:
+        print("\n --- Sistema de Gestion de Ventas ---")
+        print("1.-Iniciar sesion")
+        print("2.-Salir")
+        opcion = input("Seleccione una opcion: ")
+
+        if opcion == '1':
+            nombre_usuario = input("Ingrese su nombre de usuario: ")
+            contraseña = input("Ingrese su contraseña: ")
+            if Usuario.validar_usuario(nombre_usuario, contraseña):
+                print("Inicio de sesion exitoso. ") 
+                menu_usuario()
+            else:
+                print("Inicio de sesion fallido. Usuario o contraseña incorrectos. ")
+        elif opcion == '2':
+            print("Saliendo del sistema...")
+            break
+        else:
+            print("Opcion no valida. Intente de nuevo.")
+
+def menu_usuario():
+    while True:
+        print("\n--- Menu de Usuario ---" )
+        print("1.-Crear nuevo usuario")
+        print("2.-Ver usuarios registrados")
+        print("3.-Actualizar usuario")
+        print("4.-Borrar usuario")
+        print("5.-Menu de Productos")
+        print("6.-Menu de Compras")
+        print("7.-Salir")
+        opcion = input("Seleccione una opcion: ")
+
+        if opcion == '1':
+            nombre_usuario = input("Ingrese el nombre de usuario: ")
+            contraseña = input("Ingrese la contraseña: ")
+            Usuario.crear_usuario(nombre_usuario, contraseña)
+            print("Usuario creado exitosamente.")
+        elif opcion =='2':
+            Usuarios = Usuario.obtener_usuarios()
+            print("Usuarios registrados: ")
+            for usuario in Usuarios:
+                print(usuario)
+        elif opcion == '3':
+            id_usuario = int(input("Ingrese el ID del usuario a actualizar: "))
+            nuevo_nombre_usuario =  input("Ingrese el nuevo nombre de Usuario: ")
+            nueva_contraseña = input("Ingrese la nueva Contraseña: ")
+            Usuario.actualizar_usuario(id_usuario, nuevo_nombre_usuario, nueva_contraseña)
+            print("Usuario actualizado exitosamente.")
+        elif opcion == '4':
+            id_usuario = int(input("Ingrese el ID del usuario a borrar: "))
+            Usuario.borrar_usuario(id_usuario)
+            print("Usuario borrado exitosamente.")
+        elif opcion == '5':
+            menu_productos()
+        elif opcion == '6':
+            menu_compras()
+        elif opcion == '7':
+            print("Saliendo del menu de usuarios...")
+            break
+        else:
+            print("Opcion no valida.Intente de nuevo. ")
+    
+def menu_productos():
+    while True:
+        print("\n--- Menu de Productos ---")
+        print("1.-Crear nuevo producto")
+        print("2.-Ver todos los productos")
+        print("3.-Actualizar producto")
+        print("4.-Borrar productos")
+        print("5.-Salir")
+        opcion = input("Seleccione una opcion: ")
+
+        if opcion == '1':
+            nombre = input("Ingrese el nombre del producto: ")
+            precio = float(input("Ingrese el precio del producto: "))
+            Producto.crear_producto(nombre, precio)
+            print("Producto creado exitosa.")
+        elif opcion == '2':
+            productos = Producto.obtener_productos()
+            print("Productos registrados: ")
+            for producto in productos:
+                print(producto)
+        elif opcion == '3':
+            id_producto =int(input("Ingrese el ID del producto a actualizar: "))
+            nuevo_nombre = input("Ingrese el nuevo nombre del producto: ")
+            nuevo_precio = float(input("Ingreseel nuevo precio del producto: "))
+            Producto.actualizar_producto(id_producto, nuevo_nombre, nuevo_precio)
+            print("Producto actualizado exitosamente. ")
+        elif opcion == '4':
+            id_producto = int(input("Ingrese el ID del producto a borrar: "))
+            Producto.borrar_producto(id_producto)
+            print("Producto borrado exitosamente. ")
+        elif opcion == '5':
+            print("Saliendo del menu de productos... ")
+            break
+        else:
+            print("Opcion no valida. Intente de nuevo. ")
+
+def menu_compras():
+    while True:
+        print("\n--- Menu de Compras ---")
+        print("1.-Crear una compra")
+        print("2.-Ver todas las compras")
+        print("3.-Ver compras de un usuario especifico")
+        print("4.-Salir")
+        opcion = input("Seleccione una opcion: ")
+
+        if opcion == '1':
+            id_usuario = int(input("Ingrese el ID del usuario: "))
+            id_producto = int(input("Ingrese el ID del producto: "))
+            cantidad = int(input("Ingrese la cantidad: "))
+            compra.crear_compra(id_usuario, id_producto, cantidad)
+            print("Compra creada exitosamente. ")
+        elif opcion == '2':
+            compras = compra.obtener_compras()
+            print("Compras registradas: ")
+            for compra in compras:
+                print(compra)
+        elif opcion =="3":
+            id_usuario = int(input("Ingrese el ID del usuario: "))
+            compra_usuario = Compra.obtener_compras_por_usuario(id_usuario, ,compra_usuario)
+            print(f"Compras del usuario con ID{id_usuario}: ")
+            for compra in compra_usuario:
+                print(compra)
+        elif opcion == '4':
+            print("Saliendo del menu de compras...")
+            break
+        else:
+            print("Opcion no valida. Intente de nuevo. ")
