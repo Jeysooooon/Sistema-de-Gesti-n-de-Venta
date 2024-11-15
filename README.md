@@ -78,3 +78,11 @@ La clase `Compra` representa una compra realizada por un usuario.
 
    ```sh  
    https://github.com/Jeysooooon/Sistema-de-Gesti-n-de-Venta
+```
+
+## Commit´s 
+![53247306-3e5b-48cb-8ad6-dfea550ba0e8 (1)](https://github.com/user-attachments/assets/434cf73c-2764-4575-b344-966f6068f2c8)
+![cf8a5052-4888-4eb2-a5a7-7ce565cf54ac](https://github.com/user-attachments/assets/99a533ed-38a7-4c44-90f9-04620dd18bd9)
+
+
+
