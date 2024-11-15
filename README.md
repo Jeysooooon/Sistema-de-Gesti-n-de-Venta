@@ -1,85 +1,80 @@
-# Sistema de Gestión de Compras
-Este proyecto es un sistema de gestión de compras que permite a los usuarios crear, leer, actualizar y eliminar (CRUD) usuarios, productos y compras. Está diseñado para facilitar la administración de un inventario de productos y las compras realizadas por los usuarios.
+# Sistema de Gestion de Ventas
+En este proyecto permite a los usuarios crear, leer, actualizar y eliminar (CRUD) usuarios, productos y compras. Está diseñado para facilitar la administración de un inventario de productos y las compras realizadas por los usuarios.
 
-### Funcionalidades
-- **Gestión de Usuarios**: Crear, leer, actualizar y eliminar usuarios.
-- **Gestión de Productos**: Crear, leer, actualizar y eliminar productos.
-- **Gestión de Compras**: Crear y leer compras, así como ver compras por usuario.
+## Tabla de Contenidos
+- [Introducción](#introducción)
+- [Clases](#clases)
+  - [Clase Usuario](#clase-usuario)
+  - [Clase Producto](#clase-producto)
+  - [Clase Compra](#clase-compra)
+- [Métodos](#métodos)
+- [Requisitos](#requisitos)
+- [Instalación](#instalación)
+- [Uso](#uso)
+- [Contribuciones](#contribuciones)
+- [Licencia](#licencia)
 
-### Requisitos
-- Python 3.x
-- No se requieren bibliotecas externas para la funcionalidad básica.
+## Introducción
 
-### Directorio
-   ```sh
-   https://github.com/Jeysooooon/Sistema-de-Gesti-n-de-Venta/tree/Main2
-  ```
+Este proyecto es una aplicación para gestionar compras, usuarios y productos. Permite crear, leer y gestionar datos de manera eficiente.
 
-## Gestión de Clientes
-**Crear Cliente**:
-  
-  ```sh
-Cliente.crear_cliente("nombre_cliente", "correo_cliente")
-```
-**Leer Cliente**:
-  ```sh
-clientes = Cliente.obtener_clientes(
-```
-**Actualizar Cliente**:
-  ```sh
-Cliente.actualizar_cliente(id_cliente, "nuevo_nombre", "nuevo_correo")
-```
-**Eliminar Cliente**:
-  ```sh
-Cliente.borrar_cliente(id_cliente)
-```
+## Clases
 
-## Gestión de Productos
-**Crear Producto**:
-  ```sh
-Producto.crear_producto("nombre_producto", precio)
-```
-**Leer Producto**:
-  ```sh
-productos = Producto.obtener_productos()
-```
-**Actualizar Producto**:
-  ```sh
-Producto.actualizar_producto(id_producto, "nuevo_nombre", nuevo_precio)
-```
-**Eliminar Producto**:
-  ```sh
-Producto.borrar_producto(id_producto)
-```
+### Clase Usuario
 
-## Gestión de Ventas
-**Crear Ventas**:
-  ```sh
-Venta.crear_venta(id_cliente, id_producto, cantidad)
-```
-**Leer Ventas**:
-  ```sh
-ventas = Venta.obtener_ventas()
-```
-**Leer Ventas por Cliente**:
-  ```sh
-ventas_cliente = Venta.obtener_ventas_por_cliente(id_cliente)  # Utiliza WHERE en la consulta SQL
-```
+La clase `Usuario` representa a un usuario en el sistema.
 
-## Consultas SQL
-**Crear una Venta**:
-  ```sh
-INSERT INTO ventas (cliente_id, producto_id, cantidad, fecha) 
-VALUES (123, 456, 2, '2024-11-15');  -- Reemplaza los valores según sea necesario
-```
-**Ver Todas las Ventas**:
-  ```sh
-SELECT * 
-FROM ventas;
-```
-**Ver Ventas de un Cliente Específico**:
-  ```sh
-SELECT * 
-FROM ventas 
-WHERE cliente_id = 123;  -- Reemplaza 123 con el ID del cliente deseado
-```
+#### Atributos
+
+- `id`: Identificador único del usuario.
+- `nombre`: Nombre del usuario.
+- `contraseña`: Contraseña del usuario.
+
+#### Métodos
+
+- `__init__(self, id, nombre, contraseña)`: Constructor de la clase.
+- `crear_usuario(self)`: Crea un nuevo usuario en la base de datos.
+- `obtener_usuarios()`: Devuelve una lista de todos los usuarios.
+
+### Clase Producto
+
+La clase `Producto` representa un producto en el sistema.
+
+#### Atributos
+
+- `id`: Identificador único del producto.
+- `nombre`: Nombre del producto.
+- `precio`: Precio del producto.
+
+#### Métodos
+
+- `__init__(self, id, nombre, precio)`: Constructor de la clase.
+- `crear_producto(self)`: Crea un nuevo producto en la base de datos.
+- `obtener_productos()`: Devuelve una lista de todos los productos.
+
+### Clase Compra
+
+La clase `Compra` representa una compra realizada por un usuario.
+
+#### Atributos
+
+- `id_usuario`: Identificador del usuario que realiza la compra.
+- `id_producto`: Identificador del producto comprado.
+- `cantidad`: Cantidad del producto comprado.
+
+#### Métodos
+
+- `__init__(self, id_usuario, id_producto, cantidad)`: Constructor de la clase.
+- `crear_compra(self)`: Crea una nueva compra en la base de datos.
+- `obtener_compras()`: Devuelve una lista de todas las compras.
+- `obtener_compras_por_usuario(self, id_usuario)`: Devuelve las compras realizadas por un usuario específico.
+
+## Métodos
+
+- `menu()`: Muestra el menú principal de la aplicación.
+- `menu_compras()`: Muestra el menú para gestionar compras.
+
+## Repositorio
+
+   ```sh  
+   https://github.com/Jeysooooon/Sistema-de-Gesti-n-de-Venta
